@@ -7,12 +7,11 @@
     <parent>
         <groupId>over35</groupId>
         <artifactId>over35-samples</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <groupId>over35</groupId>
     <artifactId>shiro-samples</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <app.mainClass>over35.samples.shiro.ShiroSamples</app.mainClass>

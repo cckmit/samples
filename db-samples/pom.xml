@@ -7,12 +7,11 @@
     <parent>
         <groupId>over35</groupId>
         <artifactId>over35-samples</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <groupId>over35</groupId>
     <artifactId>db-samples</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <app.mainClass>over35.samples.db.DbSamples</app.mainClass>

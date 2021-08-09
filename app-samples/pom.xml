@@ -7,13 +7,11 @@
     <parent>
         <groupId>over35</groupId>
         <artifactId>over35-samples</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>${revision}</version>
     </parent>
 
     <groupId>over35</groupId>
     <artifactId>app-samples</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <app.mainClass>over35.samples.app.AppSamples</app.mainClass>
