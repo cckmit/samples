@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<div id="app">
+    <span>{{data}}</span>
+</div>
+</body>
+<script src="js/vue.global.js"></script>
+<script>
+    const App = {
+        data() {
+            return {
+                data: 0
+            }
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+</html>

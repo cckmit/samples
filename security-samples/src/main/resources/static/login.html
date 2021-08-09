@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页</title>
+    <link rel="stylesheet" type="text/css" href="css/element-plus.theme-chalk.css"/>
+</head>
+<body>
+<div id="app">
+    <el-form :model="ruleForm" label-width="100px">
+        <el-form-item label="用户名">
+            <el-input v-model="ruleForm.username" placeholder="用户名"/>
+        </el-form-item>
+        <el-form-item label="密码">
+            <el-input v-model="ruleForm.password" placeholder="密码"/>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="submitForm('ruleForm')">
+                Log in
+            </el-button>
+        </el-form-item>
+    </el-form>
+</div>
+</body>
+<script src="js/vue.global.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/element-plus.full.js"></script>
+<script>
+    const App = {
+        data() {
+            return {
+                ruleForm: {
+                    username: '',
+                    password: '',
+                }
+            }
+        },
+        methods: {
+            submitForm(fromName) {
+                console.log('fromName', fromName);
+
+                axios.post('/auth/login', {
+                    params: {
+                        ...this.ruleForm
+                    }
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .then(function () {
+                        // 总是会执行
+                    });
+            }
+        }
+    }
+    const app = Vue.createApp(App)
+    app.use(ElementPlus);
+    app.mount("#app");
+
+</script>
+</html>

@@ -1,0 +1,10 @@
+server:
+    port: 8080
+security:
+    ignore:
+        urls: /,/error,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/actuator/**
+#spring:
+#    security:
+#        user:
+#            name: admin
+#            password: admin

@@ -1,0 +1,53 @@
+sentinelServersConfig:
+  sentinelAddresses:
+    - "redis://127.0.0.1:26349"
+    - "redis://127.0.0.1:26359"
+    - "redis://127.0.0.1:26369"
+  masterName: mymaster
+  database: 0
+  scanInterval: 1000
+  natMapper:
+    !org.redisson.api.HostPortNatMapper
+    hostsPortMap:
+      #        !java.util.HashMap
+      "172.168.63.79:6379": "127.0.0.1:6379"
+      "172.168.0.2:6379": "127.0.0.1:6359"
+      "172.168.0.3:6379": "127.0.0.1:6349"
+      "172.168.0.4:26379": "127.0.0.1:26369"
+      "172.168.0.5:26379": "127.0.0.1:26359"
+  checkSentinelsList: true
+  sentinelPassword: null
+  checkSlaveStatusWithSyncing: true
+  ## BaseMasterSlaveServersConfig
+  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> { }
+  slaveConnectionMinimumIdleSize: 24
+  slaveConnectionPoolSize: 64
+  failedSlaveReconnectionInterval: 3000
+  failedSlaveCheckInterval: 180000
+  masterConnectionMinimumIdleSize: 24
+  masterConnectionPoolSize: 64
+  readMode: SLAVE
+  #  subscriptionMode: MASTER
+  #  subscriptionConnectionMinimumIdleSize: 1
+  #  subscriptionConnectionPoolSize: 50
+  #  dnsMonitoringInterval: 5000
+  ## BaseConfig
+  #  idleConnectionTimeout: 3000
+  #  connectTimeout: 1000
+  #  timeout: 3000
+  #  retryAttempts: 3
+  #  retryInterval: 1500
+  #  password: null
+  #  username: null
+  subscriptionsPerConnection: null
+  clientName: null
+#  sslEnableEndpointIdentification: true
+#  sslProvider: JDK
+#  sslTruststore: null
+#  sslTruststorePassword: null
+#  sslKeystore: null
+#  sslKeystorePassword: null
+threads: 16
+nettyThreads: 32
+codec: !<org.redisson.codec.JsonJacksonCodec> { }
+transportMode: "NIO"
