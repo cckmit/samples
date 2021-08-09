@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>over35</groupId>
         <artifactId>over35-parent</artifactId>
         <version>1.0.3</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <groupId>over35</groupId>
     <artifactId>over35-samples</artifactId>
-    <version>${revision}</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <developers>
@@ -33,14 +31,14 @@
         <developerConnection>scm:git:git@codeup.aliyun.com:60b5a9a32c5969c370c5da41/over35/over35-samples.git
         </developerConnection>
         <url>https://codeup.aliyun.com/60b5a9a32c5969c370c5da41/over35/over35-samples.git</url>
-        <tag>HEAD</tag>
+        <tag>over35-samples-1.0.1</tag>
     </scm>
 
     <properties>
         <java.version>1.8</java.version>
         <revision>0.0.1-SNAPSHOT</revision>
         <over35-commons.version>1.0.2</over35-commons.version>
-        <app.mainClass/>
+        <app.mainClass />
     </properties>
 
     <!--    子模块管理-->
