@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>over35</groupId>
         <artifactId>over35-parent</artifactId>
         <version>1.0.3</version>
-        <relativePath />
+        <relativePath/>
     </parent>
 
     <groupId>over35</groupId>
@@ -17,9 +18,9 @@
         <developer>
             <id>daibin</id>
             <name>daibin</name>
-            <email />
-            <organization />
-            <organizationUrl />
+            <email/>
+            <organization/>
+            <organizationUrl/>
             <roles>
                 <role>Project lead</role>
             </roles>
@@ -38,22 +39,16 @@
         <java.version>1.8</java.version>
         <revision>0.0.1-SNAPSHOT</revision>
         <over35-commons.version>1.0.2</over35-commons.version>
-        <app.mainClass />
+        <hutool.version>5.7.8</hutool.version>
+        <spring-boot.version>2.5.3</spring-boot.version>
     </properties>
 
     <!--    子模块管理-->
     <modules>
+        <module>spring-boot-samples</module>
+        <module>base-samples</module>
+        <!--        ##-->
         <module>db-samples</module>
-        <module>security-samples</module>
-        <module>shiro-samples</module>
-        <module>fluent-mybatis-samples</module>
-        <module>mybatis-samples</module>
-        <module>jpa-samples</module>
-        <module>sharding-jdbc-samples</module>
-        <module>redisson-samples</module>
-        <module>arthas-samples</module>
-        <module>task-samples</module>
-        <module>powerjob-samples</module>
         <module>app-samples</module>
     </modules>
 
@@ -67,66 +62,18 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>over35</groupId>
-            <artifactId>over35-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <mainClass>${app.mainClass}</mainClass>
-                    <layout>ZIP</layout>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <compilerVersion>${maven.compiler.source}</compilerVersion>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,72 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+<style>
+mindmapDiagram {
+  .green {
+    BackgroundColor lightgreen
+  }
+  .blue {
+    BackgroundColor blue
+  }
+  .lightblue {
+      BackgroundColor lightblue
+   }
+  .red {
+      BackgroundColor red
+   }
+  .aqua {
+         BackgroundColor aqua
+   }
+}
+</style>
+
+caption samples
+title Rabbitmq 学习
+
+* <&flag>rabbitmq
+** <&globe>五种模式
+
+*** 简单模式Simple
+**** 生成者生产消息,放入队列，消费者从队列取消息
+**** 模型示意图
+***** 生产者<<aqua>>
+****** 队列<<red>>
+******* 消费者<<lightblue>>
+
+*** 工作模式WorkQueues
+**** 多个消费者竞争消息。生成者生产消息,放入队列，空闲的消费者从队列取消息
+**** 模型示意图
+***** 生产者<<aqua>>
+****** 队列<<red>>
+******* 消费者1<<lightblue>>
+******* 消费者2<<lightblue>>
+
+*** 发布/订阅模式PublishSubscribe
+**** desc
+**** 模型示意图
+***** 生产者<<aqua>>
+****** 交换机<<blue>>
+******* 队列1<<red>>
+******** 消费者1<<lightblue>>
+******* 队列2<<red>>
+******** 消费者2<<lightblue>>
+
+*** 路由模式Routing
+**** desc
+**** 模型示意图
+
+*** 主题模式Topics
+**** desc
+**** 模型示意图
+
+header
+samples header
+endheader
+
+center footer samples footer
+
+legend right
+  Short
+  legend
+endlegend
+@endmindmap
