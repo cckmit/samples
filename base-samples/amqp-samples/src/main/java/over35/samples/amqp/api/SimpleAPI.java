@@ -63,7 +63,7 @@ public class SimpleAPI extends AbstractAPI {
         @Override
         protected void beforeEach() throws IOException, TimeoutException {
             super.beforeEach();
-            channel.queueDeclare(getQueueName(), false, false, false, null);
+            channel.queueDeclare(getQueueName(), true, false, false, null);
         }
 
         @Override

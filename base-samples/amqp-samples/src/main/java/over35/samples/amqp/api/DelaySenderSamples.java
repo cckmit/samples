@@ -1,6 +1,6 @@
 package over35.samples.amqp.api;
 
-import com.rabbitmq.client.BuiltinExchangeType;
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.DeliverCallback;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -12,48 +12,59 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 /**
  * @author: daibin
- * @date: 2021/8/13 10:02 下午
+ * @date: 2021/8/17 10:37 上午
  */
 @Slf4j
-public class RoutingAPI extends AbstractAPI {
+public class DelaySenderSamples extends AbstractAPI {
 
     static String getExchange() {
-        return "Routing-Exchange";
+        return "delay_exchange";
     }
 
-    private static String getRouting() {
-        return "R-Routing";
+    static String getQueueName() {
+        return "delay_queue";
+    }
+
+    static String getRouting() {
+        return "delay_routingKey";
     }
 
     static class Sender extends AbstractClient implements AbstractClient.Sender {
+
         @SneakyThrows
         public Sender() {
             beforeEach();
         }
 
         @Override
+        public void send(String message) throws IOException {
+            Map<String,Object> headers = new HashMap<>();
+            headers.put("x-delay",10*1000);
+            AMQP.BasicProperties basicProperties = new AMQP.BasicProperties()
+                    .builder()
+                    .headers(headers)
+                    .build();
+            channel.basicPublish(getExchange(), getRouting(), basicProperties, message.getBytes(StandardCharsets.UTF_8));
+            log.info(" [x] Sent:{}", message);
+
+        }
+
+        @Override
         protected String getExchange() {
-            return RoutingAPI.getExchange();
+            return DelaySenderSamples.getExchange();
         }
 
         @Override
         protected String getRouting() {
-            return RoutingAPI.getRouting();
-        }
-
-        @Override
-        public void send(String message) throws IOException {
-
-            channel.basicPublish(getExchange(), getRouting(), null, message.getBytes(StandardCharsets.UTF_8));
-            log.info(" [x] Sent:{}", message);
-
+            return DelaySenderSamples.getRouting();
         }
     }
-
 
     static class Receiver extends AbstractClient implements AbstractClient.Receiver {
 
@@ -67,35 +78,32 @@ public class RoutingAPI extends AbstractAPI {
         }
 
         @Override
+        protected void beforeEach() throws IOException, TimeoutException {
+            getProperties().setPort(5652);
+            super.beforeEach();
+            channel.queueDeclare(getQueueName(), true, false, false, null);
+
+            Map<String, Object> arguments = new HashMap<>();
+            arguments.put("x-delayed-type","direct");
+            channel.exchangeDeclare(getExchange(), "x-delayed-message",true,false,arguments);
+
+            // 绑定交换机 队列
+            channel.queueBind(getQueueName(), getExchange(), getRouting());
+        }
+
+        @Override
         protected String getExchange() {
-            return RoutingAPI.getExchange();
+            return DelaySenderSamples.getExchange();
         }
 
         @Override
         protected String getRouting() {
-            return RoutingAPI.getRouting();
+            return DelaySenderSamples.getRouting();
         }
 
         @Override
         protected String getQueueName() throws IOException {
-            return "Routing-Queue-" + no;
-        }
-
-        @Override
-        protected void beforeEach() throws IOException, TimeoutException {
-            super.beforeEach();
-            // 声明队列
-            channel.queueDeclare(getQueueName(), true, false, false, null);
-            // 声明交换机
-            // 交换类型
-            // DIRECT 路由
-            // FANOUT 广播
-            // TOPIC
-            // HEADERS
-            channel.exchangeDeclare(getExchange(), BuiltinExchangeType.DIRECT);
-
-            // 绑定交换机 队列
-            channel.queueBind(getQueueName(), getExchange(), getRouting());
+            return DelaySenderSamples.getQueueName();
         }
 
         @Override
@@ -140,5 +148,4 @@ public class RoutingAPI extends AbstractAPI {
         System.out.println("end");
         System.exit(0);
     }
-
 }

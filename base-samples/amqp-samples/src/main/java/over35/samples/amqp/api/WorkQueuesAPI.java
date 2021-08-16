@@ -61,9 +61,8 @@ public class WorkQueuesAPI extends AbstractAPI {
         @Override
         protected void beforeEach() throws IOException, TimeoutException {
             super.beforeEach();
-            // 持久化
-            boolean durable = true;
-            channel.queueDeclare(getQueueName(), durable, false, false, null);
+            // 持久化 boolean durable = true;
+            channel.queueDeclare(getQueueName(), true, false, false, null);
         }
 
         @Override
