@@ -1,0 +1,4 @@
+conf:
+  user:
+    name: _name_
+    age: 18

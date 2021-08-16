@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import over35.samples.amqp.AmqpSamplesTest
 import over35.samples.amqp.model.Order
 
+import java.util.concurrent.TimeUnit
+
 /**
  * @author: daibin* @date: 2021/8/16 6:11 下午
  */
@@ -21,6 +23,6 @@ class SimpleSenderTest extends AmqpSamplesTest{
         Order order = new Order(id: snowflakeGenerator.next(),state: 'ON')
         sender.send(order)
 
-//        TimeUnit.SECONDS.sleep(2L)
+        TimeUnit.SECONDS.sleep(5L)
     }
 }

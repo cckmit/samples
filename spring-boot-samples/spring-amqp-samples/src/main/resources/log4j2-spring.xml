@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO">
+<Configuration status="DEBUG">
     <Properties>
         <Property name="JM.LOG.APPNAME" value="samples"/>
         <Property name="JM.LOG.PATH" value="${HOME}/logs/${JM.LOG.APPNAME}/"/>
-        <Property name="JM.LOG.FILE.SIZE" value="10MB"/>
-        <Property name="JM.LOG.RETAIN.COUNT" value="7"/>
+        <Property name="JM.LOG.FILE.SIZE" value="-10MB"/>
+        <Property name="JM.LOG.RETAIN.COUNT" value="-7"/>
     </Properties>
     <Appenders>
-        <RollingFile name="LOCAL_LOG_FILE" fileName="${JM.LOG.PATH}/local.log"
-                     filePattern="${JM.LOG.PATH}/local.log.%d{yyyy-MM-dd}.%i">
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <RollingFile name="LOCAL_LOG_FILE" fileName="/Users/jim/logs/samples/local.log"
+                     filePattern="/Users/jim/logs/samples/local.log.%d{yyyy-MM-dd}.%i">
             <PatternLayout>
                 <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %p [%-5t:%c{2}] %m%n</Pattern>
             </PatternLayout>
 
             <Policies>
                 <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="${JM.LOG.FILE.SIZE}"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
             </Policies>
 
-            <DefaultRolloverStrategy max="${JM.LOG.RETAIN.COUNT}"/>
+            <DefaultRolloverStrategy max="7"/>
         </RollingFile>
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </Console>
     </Appenders>
     <Loggers>
         <Logger name="over35.samples" level="debug" additivity="false">

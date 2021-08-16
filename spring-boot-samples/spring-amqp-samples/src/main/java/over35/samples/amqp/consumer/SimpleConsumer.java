@@ -29,10 +29,12 @@ public class SimpleConsumer {
 
         try {
             log.info("---接受信息:{}", order);
+            String s = null;
+            s.equals("null");
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
         } catch (Exception e) {
             log.error("异常", e);
         } finally {
-            channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
         }
     }
 }

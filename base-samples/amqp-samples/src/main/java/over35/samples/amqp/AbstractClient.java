@@ -3,6 +3,7 @@ package over35.samples.amqp;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -32,11 +33,6 @@ public abstract class AbstractClient {
     }
 
     protected void beforeEach() throws IOException, TimeoutException {
-        AmqpProperties properties = new AmqpProperties();
-        properties.setHost("localhost");
-        properties.setPort(5662);
-        properties.setUsername("guest");
-        properties.setPassword("guest");
 
         connectionFactory = connectionFactory(properties);
         connection = connection(connectionFactory);
@@ -52,6 +48,13 @@ public abstract class AbstractClient {
             connection.close();
         }
     }
+
+    @Getter
+    AmqpProperties properties = new AmqpProperties()
+        .setHost("localhost")
+        .setPort(5662)
+        .setUsername("admin")
+        .setPassword("admin");
 
     ConnectionFactory connectionFactory(AmqpProperties properties) {
         ConnectionFactory factory = new ConnectionFactory();

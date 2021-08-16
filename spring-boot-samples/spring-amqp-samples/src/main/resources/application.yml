@@ -1,9 +1,11 @@
 spring:
+  config:
+    location:
   rabbitmq:
     host: localhost
     port: 5662
-    username: guest
-    password: guest
+    username: admin
+    password: admin
     listener:
       simple:
         acknowledge-mode: manual
@@ -14,3 +16,8 @@ spring:
         retry:
           enabled: true
     dynamic: true
+#    publisher-confirms: true
+    publisher-confirm-type: correlated
+    publisher-returns: true
+logging:
+  config: classpath:log4j2-spring.xml
