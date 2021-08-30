@@ -1,0 +1,21 @@
+server:
+  port: 8080
+cxf:
+  jaxrs:
+    classes-scan-packages: samples.springboot.webservice.web
+    component-scan: true
+  path: /services
+  servlet:
+    enabled: true
+  metrics:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      metrics:
+        enabled: true
+
+

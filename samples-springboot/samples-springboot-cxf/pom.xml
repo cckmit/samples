@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>samples-springboot</groupId>
+        <artifactId>springboot</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>samples-springboot-cxf</artifactId>
+    <packaging>pom</packaging>
+
+
+    <properties>
+        <apache.cxf.version>3.4.5</apache.cxf.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+                <version>${apache.cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+                <version>${apache.cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-jms</artifactId>
+                <version>${apache.cxf.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>samples-springboot-cxf-jaxws</module>
+    </modules>
+</project>

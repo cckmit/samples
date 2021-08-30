@@ -27,6 +27,7 @@
         <module>samples-base-powerjob</module>
         <module>samples-base-elasticsearch</module>
         <module>samples-base-amqp</module>
+        <module>samples-base-cxf</module>
     </modules>
 
     <dependencies>
