@@ -1,0 +1,68 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="mybatis-generator/jdbc.properties"/>
+    <context id="over35" targetRuntime="MyBatis3DynamicSql">
+        <!--        自动分隔关键字-->
+        <property name="autoDelimitKeywords" value="false"/>
+        <!--        java文件编码-->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!--        格式化java代码-->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!--        xml格式化程序-->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="samples.springboot.mybatis.dynamic.BaseMapper"/>
+            <property name="caseSensitive" value="false"/>
+            <property name="forceAnnotation" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+            <property name="lombok" value="Data"/>
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!--        <connectionFactory></connectionFactory>-->
+        <jdbcConnection driverClass="${driverClass}"
+                        connectionURL="${url}"
+                        userId="${username}"
+                        password="${password}"
+        >
+            <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="over35.samples.mybatis.repository.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="over35.samples.mybatis.repository.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="t_user" domainObjectName="User">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="username" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="t_role" domainObjectName="Role">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="role" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

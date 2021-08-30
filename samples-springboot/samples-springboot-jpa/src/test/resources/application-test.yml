@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/h2db/db-samples;MODE=MYSQL
+#      日志配置
+logging:
+  level:
+    samples:
+      fluentmybatis: debug
