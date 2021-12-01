@@ -5,15 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>samples-base</groupId>
+        <groupId>samples.base</groupId>
         <artifactId>base</artifactId>
-        <version>${revision}</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-<<<<<<< HEAD:samples-base/samples-base-powerjob/pom.xml
-    <artifactId>samples-base-powerjob</artifactId>
-=======
     <artifactId>samples-base-mybatis</artifactId>
->>>>>>> f6c55ed (修改samples 结构):samples-base/samples-base-mybatis/pom.xml
 
 </project>

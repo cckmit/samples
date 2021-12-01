@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>samples-springboot</groupId>
+        <groupId>samples.springboot</groupId>
         <artifactId>samples-springboot-cxf</artifactId>
-        <version>${revision}</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>samples-springboot-cxf-jaxws</artifactId>
@@ -70,7 +70,7 @@
     </build>
     <profiles>
         <profile>
-            <id>client</id>
+            <id>cxf-client</id>
             <build>
                 <defaultGoal>test</defaultGoal>
                 <plugins>
@@ -96,7 +96,7 @@
             </build>
         </profile>
         <profile>
-            <id>server</id>
+            <id>cxf-server</id>
             <build>
                 <defaultGoal>test</defaultGoal>
                 <plugins>

@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>samples-springboot</groupId>
+        <groupId>samples.springboot</groupId>
         <artifactId>springboot</artifactId>
-        <version>${revision}</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>samples-springboot-mybatis</artifactId>
@@ -17,8 +17,16 @@
     <dependencies>
 
         <dependency>
+            <groupId>samples</groupId>
+            <artifactId>commons</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mybatis.dynamic-sql</groupId>

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 public class EntityGeneratorDemo {
 
-    public static final String url = "jdbc:h2:file:~/h2db/db-samples;MODE=MYSQL";
+    public static final String url = "jdbc:h2:file:~/h2/db-samples;MODE=MYSQL";
 
     @Test
     public void generate() throws Exception {

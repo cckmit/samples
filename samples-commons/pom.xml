@@ -7,24 +7,28 @@
     <parent>
         <groupId>samples</groupId>
         <artifactId>samples-parent</artifactId>
-        <version>${revision}</version>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../samples-parent/pom.xml</relativePath>
     </parent>
 
-    <groupId>samples-commons</groupId>
     <artifactId>commons</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

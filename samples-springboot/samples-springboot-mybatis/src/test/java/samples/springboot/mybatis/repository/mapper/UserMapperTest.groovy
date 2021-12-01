@@ -28,13 +28,13 @@ class UserMapperTest extends MybatisSamplesTest {
 
     @Test
     void test_selectAll() {
-        def user = userMapper.select(c->c)
+        def user = userMapper.select({ c -> c })
         println user
     }
 
     @Test
     void test_select() {
-        println userMapper.select(c -> c.where(username, isEqualTo('username_1')))
+        println userMapper.select({ c -> c.where(username, isEqualTo('username_1')) })
     }
 
     @Test
