@@ -29,6 +29,7 @@
         <module>samples-base-elasticsearch</module>
         <module>samples-base-amqp</module>
         <module>samples-base-cxf</module>
+        <module>samples-base-websocket</module>
     </modules>
 
     <dependencies>
